@@ -20,6 +20,12 @@ O app abre em `http://localhost:8501`. As cinco propriedades demonstrativas já 
 (`data/cache/`), então a demonstração funciona sem internet. Coordenadas novas são consultadas na hora
 (NASA POWER ~10–30 s; NDVI MODIS sob demanda na tela de mapa).
 
+### Link público (Streamlit Community Cloud, gratuito)
+
+1. Acesse [share.streamlit.io](https://share.streamlit.io) e entre com a conta do GitHub.
+2. **Create app** → repositório `monica1602/RotaClima`, branch `main`, arquivo principal `app.py` → **Deploy**.
+3. O endereço gerado (ex.: `https://rotaclima.streamlit.app`) abre em qualquer computador ou celular, sem login.
+
 Testes:
 
 ```bash
