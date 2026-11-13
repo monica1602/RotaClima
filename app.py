@@ -857,9 +857,10 @@ def page_simulador() -> None:
                                "Água atendida — histórico": s_b[f"sat_{i}"].mean(),
                                "Água atendida — cenário": s_s[f"sat_{i}"].mean()})
     if detail:
-        d = pd.DataFrame(detail)
-        fig = px.bar(d.melt(id_vars=["Rotação", "Época", "Cultura"], var_name="Clima", value_name="ETa/ETc"),
+        d = pd.DataFrame(detail).drop(columns="Época").groupby(["Rotação", "Cultura"], sort=False).mean().reset_index()
+        fig = px.bar(d.melt(id_vars=["Rotação", "Cultura"], var_name="Clima", value_name="ETa/ETc"),
                      x="Cultura", y="ETa/ETc", color="Clima", barmode="group", facet_col="Rotação", facet_col_wrap=2,
+                     facet_row_spacing=0.18,
                      color_discrete_sequence=["#90A4AE", "#4C8BF5"], title="Fração da demanda hídrica atendida")
         fig.update_layout(height=320 * ((len(chosen) + 1) // 2))
         fig.update_xaxes(matches=None, showticklabels=True)
